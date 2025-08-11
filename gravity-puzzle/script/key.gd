@@ -1,11 +1,7 @@
-extends RigidBody2D
+extends Node2D
 
-var state
-var pattern
-
-func _ready() -> void:
-	state = 0
-	pattern = 0
+var collected : bool
+var level = global.level
 
 func cw():
 	var x = global_position.x
@@ -19,11 +15,15 @@ func ccw():
 	global_position.x = y
 	global_position.y = -x
 
-func _physics_process(delta: float) -> void:
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.has_method("player"):
+		collected = true
+
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("rotate_cw"):
 		cw()
 	if Input.is_action_just_pressed("rotate_ccw"):
 		ccw()
-
-func block():
-	pass
+	
+	if collected and level == 0:
+		get_tree().change_scene_to_file("res://scene/level_2.tscn")
