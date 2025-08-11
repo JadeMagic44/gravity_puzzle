@@ -28,3 +28,4 @@ shape = SubResource("CircleShape2D_hn12h")
 position = Vector2(-32, -144)
 
 [connection signal="body_exited" from="reset" to="." method="_on_reset_body_exited"]
+[connection signal="solved" from="key" to="." method="_on_key_solved"]

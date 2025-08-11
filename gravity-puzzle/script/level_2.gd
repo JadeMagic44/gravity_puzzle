@@ -37,3 +37,7 @@ func _on_out_of_bounds_body_exited(body: Node2D) -> void:
 		body.global_position = Vector2i(0, 0)
 	if body.has_method("block"):
 		body.global_position = Vector2i(0, 0)
+
+
+func _on_key_solved() -> void:
+	get_tree().change_scene_to_file("res://scene/level_1.tscn") # change to level 3 when its done
