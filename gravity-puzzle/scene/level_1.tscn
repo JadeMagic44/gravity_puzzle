@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=4 uid="uid://cop5n4ry43o43"]
+
+[ext_resource type="Script" uid="uid://dq1ne4yslmmi8" path="res://script/level_1.gd" id="1_3flxk"]
+[ext_resource type="TileSet" uid="uid://b8eua1s7i5kje" path="res://data/game_tile_set.tres" id="2_xesoj"]
+[ext_resource type="PackedScene" uid="uid://c8ikp4l0mauav" path="res://scene/player.tscn" id="3_53ndp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hn12h"]
+radius = 367.165
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hph3"]
+size = Vector2(31, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihfcg"]
+size = Vector2(20, 27)
+
+[node name="level_1" type="Node2D"]
+script = ExtResource("1_3flxk")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+rotation = 3.14159
+tile_map_data = PackedByteArray("AAAHAAYAAgACAAEAAAAHAAUAAgABAAEAAAAHAAQAAgABAAEAAAAHAAMAAgABAAEAAAAHAAIAAgABAAEAAAAHAAEAAgABAAEAAAAHAAAAAgABAAEAAAAHAP//AgABAAEAAAAHAP7/AgABAAEAAAAHAP3/AgABAAEAAAAHAPz/AgABAAEAAAAHAPv/AgABAAEAAAAHAPr/AgACAAEAAAAGAAYAAgACAAAAAAAGAPr/AgACAAIAAAAFAAYAAgACAAAAAAAFAPr/AgACAAIAAAAEAAYAAgACAAAAAAAEAPr/AgACAAIAAAADAAYAAgACAAAAAAADAPr/AgACAAIAAAACAAYAAgACAAAAAAACAPr/AgACAAIAAAABAAYAAgACAAAAAAABAPr/AgACAAIAAAAAAAYAAgACAAAAAAAAAPr/AgACAAIAAAD//wYAAgACAAAAAAD///r/AgABAAIAAAD+/wYAAgACAAAAAAD9/wYAAgACAAAAAAD8/wYAAgACAAAAAAD8//r/AgADAAIAAAD7/wYAAgACAAAAAAD7//r/AgACAAIAAAD6/wYAAgACAAEAAAD6//r/AgACAAIAAAD5/wYAAgACAAEAAAD5/wUAAgADAAEAAAD5/wQAAgADAAEAAAD5/wMAAgADAAEAAAD5/wIAAgADAAEAAAD5/wEAAgADAAEAAAD5/wAAAgADAAEAAAD5////AgADAAEAAAD5//7/AgADAAEAAAD5//3/AgADAAEAAAD5//z/AgADAAEAAAD5//v/AgADAAEAAAD5//r/AgACAAEAAAAIAAYAAgADAAEAAAAIAAUAAgADAAEAAAAIAAQAAgADAAEAAAAIAAMAAgADAAEAAAAIAAIAAgADAAEAAAAIAAEAAgADAAEAAAAIAAAAAgADAAEAAAAIAP//AgADAAEAAAAIAP7/AgADAAEAAAAIAP3/AgADAAEAAAAIAPz/AgADAAEAAAAIAPv/AgADAAEAAAAIAPr/AgADAAEAAAD4/wYAAgABAAEAAAD4/wUAAgABAAEAAAD4/wQAAgABAAEAAAD4/wMAAgABAAEAAAD4/wIAAgABAAEAAAD4/wEAAgABAAEAAAD4/wAAAgABAAEAAAD4////AgABAAEAAAD4//7/AgABAAEAAAD4//3/AgABAAEAAAD4//z/AgABAAEAAAD4//v/AgABAAEAAAD4//r/AgABAAEAAAAIAAcAAgADAAIAAAAHAAcAAgACAAIAAAAGAAcAAgACAAIAAAAFAAcAAgACAAIAAAAEAAcAAgACAAIAAAADAAcAAgACAAIAAAACAAcAAgACAAIAAAABAAcAAgACAAIAAAAAAAcAAgACAAIAAAD//wcAAgACAAIAAAD+/wcAAgACAAIAAAD9/wcAAgACAAIAAAD8/wcAAgACAAIAAAD7/wcAAgACAAIAAAD6/wcAAgACAAIAAAD5/wcAAgACAAIAAAD4/wcAAgABAAIAAAAIAPn/AgADAAAAAAAHAPn/AgACAAAAAAAGAPn/AgACAAAAAAAFAPn/AgACAAAAAAAEAPn/AgACAAAAAAADAPn/AgACAAAAAAACAPn/AgACAAAAAAABAPn/AgACAAAAAAAAAPn/AgACAAEAAAD///n/AgABAAEAAAD8//n/AgADAAEAAAD7//n/AgACAAEAAAD6//n/AgACAAAAAAD5//n/AgACAAAAAAD4//n/AgABAAAAAAD8//j/AgADAAEAAAD8//f/AgADAAEAAAD8//b/AgADAAEAAAD8//X/AgACAAEAAAD9//X/AgACAAIAAAD+//X/AgACAAIAAAD///X/AgACAAEAAAD///b/AgABAAEAAAD///f/AgABAAEAAAD///j/AgABAAEAAAD7//j/AgABAAEAAAD7//f/AgABAAEAAAD7//b/AgABAAEAAAD7//X/AgABAAEAAAD7//T/AgABAAAAAAD8//T/AgACAAAAAAD9//T/AgACAAAAAAD+//T/AgACAAAAAAD///T/AgACAAAAAAAAAPT/AgADAAAAAAAAAPX/AgADAAEAAAAAAPb/AgADAAEAAAAAAPf/AgADAAEAAAAAAPj/AgADAAEAAAD+//b/AAAAAAAAAAA=")
+tile_set = ExtResource("2_xesoj")
+
+[node name="player" parent="." instance=ExtResource("3_53ndp")]
+
+[node name="reset" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reset"]
+visible = false
+position = Vector2(-2, 1)
+shape = SubResource("CircleShape2D_hn12h")
+
+[node name="solve_1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solve_1"]
+position = Vector2(31.5, 149)
+shape = SubResource("RectangleShape2D_5hph3")
+
+[node name="solve_2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solve_2"]
+position = Vector2(-149, 31.5)
+shape = SubResource("RectangleShape2D_ihfcg")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -112.0
+offset_top = 12.0
+offset_right = 97.0
+offset_bottom = 35.0
+text = "Press [R] to rotate the level"
+
+[connection signal="interact" from="player" to="." method="_on_player_interact"]
+[connection signal="body_exited" from="reset" to="." method="_on_reset_body_exited"]
+[connection signal="body_entered" from="solve_1" to="." method="_on_solve_1_body_entered"]
+[connection signal="body_entered" from="solve_2" to="." method="_on_solve_2_body_entered"]
