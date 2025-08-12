@@ -27,3 +27,5 @@ func _physics_process(delta: float) -> void:
 
 func block():
 	pass
+func heavy():
+	pass

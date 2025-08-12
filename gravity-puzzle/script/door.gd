@@ -1,9 +1,7 @@
 extends Node2D
 
-var collected : bool
-var level = global.level
-signal solved
-
+@export var state : int 
+@onready var door: Node2D = $"."
 func cw():
 	var x = global_position.x
 	var y = global_position.y
@@ -16,15 +14,25 @@ func ccw():
 	global_position.x = y
 	global_position.y = -x
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("player"):
-		emit_signal("solved")
-
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	match state:
+		-1:
+			state = 3
+		0:
+			door.global_rotation = 2*PI
+		1:
+			door.global_rotation = PI/2
+		2:
+			door.global_rotation = PI
+		3:
+			door.global_rotation = 3*PI/2
+		4:
+			state = 0 
+	
 	if Input.is_action_just_pressed("rotate_cw"):
 		cw()
+		state += 1
+	
 	if Input.is_action_just_pressed("rotate_ccw"):
 		ccw()
-	
-	
-	
+		state -= 1

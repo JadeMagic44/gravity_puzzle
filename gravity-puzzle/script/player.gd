@@ -41,3 +41,5 @@ func _physics_process(delta: float) -> void:
 
 func player():
 	pass
+func heavy():
+	pass

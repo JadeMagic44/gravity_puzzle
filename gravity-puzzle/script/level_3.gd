@@ -1,14 +1,20 @@
 extends Node2D
 
+@onready var key: Node2D = $key
 @onready var tile: TileMapLayer = $TileMapLayer
-var state
-
+var state : int
+@onready var label: Label = $Label
+@onready var door: Node2D = $door
+var open : bool
+@onready var col: CollisionShape2D = $door/StaticBody2D/CollisionShape2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	state = 0
-	global.level = 1
+	global.level = 2
+	open = false
+	door.global_position = Vector2i(-136, 103)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,10 +33,13 @@ func _process(_delta: float) -> void:
 		4:
 			state = 0 
 	
+	
 	if Input.is_action_just_pressed("rotate_cw"):
 		state += 1
 	if Input.is_action_just_pressed("rotate_ccw"):
 		state -= 1
+	
+
 
 func _on_out_of_bounds_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
@@ -40,4 +49,14 @@ func _on_out_of_bounds_body_exited(body: Node2D) -> void:
 
 
 func _on_key_solved() -> void:
-	get_tree().change_scene_to_file("res://scene/level_3.tscn")
+	get_tree().change_scene_to_file("res://scene/level_1.tscn")
+
+
+
+func _on_button_is_pressed() -> void:
+	door.hide()
+	door.global_position = Vector2i(-42, 132)
+
+func _on_button_is_not_pressed() -> void:
+	door.global_position = Vector2i(-136, 103)
+	door.show()
