@@ -5,7 +5,6 @@ extends Node2D
 var state : int
 @onready var label: Label = $Label
 @onready var door: Node2D = $door
-var open : bool
 @onready var col: CollisionShape2D = $door/StaticBody2D/CollisionShape2D
 
 
@@ -13,7 +12,6 @@ var open : bool
 func _ready() -> void:
 	state = 0
 	global.level = 2
-	open = false
 	door.global_position = Vector2i(-136, 103)
 
 
@@ -36,8 +34,10 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("rotate_cw"):
 		state += 1
+		label.hide()
 	if Input.is_action_just_pressed("rotate_ccw"):
 		state -= 1
+		label.hide()
 	
 
 
@@ -45,11 +45,11 @@ func _on_out_of_bounds_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
 		body.global_position = Vector2i(0, 0)
 	if body.has_method("block"):
-		body.global_position = Vector2i(0, 0)
+		get_tree().reload_current_scene()
 
 
 func _on_key_solved() -> void:
-	get_tree().change_scene_to_file("res://scene/level_1.tscn")
+	get_tree().change_scene_to_file("res://scene/wip.tscn")
 
 
 
@@ -58,5 +58,6 @@ func _on_button_is_pressed() -> void:
 	door.global_position = Vector2i(-42, 132)
 
 func _on_button_is_not_pressed() -> void:
-	door.global_position = Vector2i(-136, 103)
 	door.show()
+	door.global_position = Vector2i(-136, 103)
+	

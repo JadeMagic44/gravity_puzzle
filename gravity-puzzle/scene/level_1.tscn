@@ -27,5 +27,12 @@ shape = SubResource("CircleShape2D_hn12h")
 [node name="key" parent="." instance=ExtResource("4_xesoj")]
 position = Vector2(-32, -144)
 
+[node name="Label" type="Label" parent="."]
+offset_left = -100.0
+offset_top = -15.0
+offset_right = 126.0
+offset_bottom = 8.0
+text = "Press [E] or [Q] to rotate level"
+
 [connection signal="body_exited" from="reset" to="." method="_on_reset_body_exited"]
 [connection signal="solved" from="key" to="." method="_on_key_solved"]

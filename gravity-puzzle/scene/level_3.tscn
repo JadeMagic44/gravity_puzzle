@@ -58,6 +58,12 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="out_of_bounds"]
 shape = SubResource("CircleShape2D_owe0h")
 
+[node name="Label" type="Label" parent="."]
+offset_left = -285.0
+offset_top = -23.0
+offset_right = -108.0
+text = "Buttons can open door"
+
 [connection signal="is_not_pressed" from="button" to="." method="_on_button_is_not_pressed"]
 [connection signal="is_pressed" from="button" to="." method="_on_button_is_pressed"]
 [connection signal="solved" from="key" to="." method="_on_key_solved"]

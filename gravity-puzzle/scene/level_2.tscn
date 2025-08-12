@@ -31,5 +31,12 @@ shape = SubResource("CircleShape2D_1y8me")
 [node name="key" parent="." instance=ExtResource("5_pm0i2")]
 position = Vector2(96, 16)
 
+[node name="Label" type="Label" parent="."]
+offset_left = -61.0
+offset_top = -85.0
+offset_right = 218.0
+offset_bottom = -62.0
+text = "Blocks can only be moved by gravity"
+
 [connection signal="body_exited" from="out_of_bounds" to="." method="_on_out_of_bounds_body_exited"]
 [connection signal="solved" from="key" to="." method="_on_key_solved"]

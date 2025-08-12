@@ -2,8 +2,7 @@ extends Node2D
 
 @onready var tile: TileMapLayer = $TileMapLayer
 var state
-
-
+@onready var label: Label = $Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,8 +28,10 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("rotate_cw"):
 		state += 1
+		label.hide()
 	if Input.is_action_just_pressed("rotate_ccw"):
 		state -= 1
+		label.hide()
 
 func _on_out_of_bounds_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
